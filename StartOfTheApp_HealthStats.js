@@ -144,6 +144,11 @@ const bmi = (weight, heightCms) => {
 })(personalInfo, stats, bmi);
 
 // Task 3: Turn the data into JSON and back and make sure it still is valid and same information
+const statsJson = JSON.stringify(stats);
+console.log(statsJson);
+
+const statsObj = JSON.parse(statsJson);
+console.log(statsObj);
 
 // Task 4: If want to, start thinking how to generate data. JavaScript is not the best suited
 // for that task, compared to e.g. Python. But if want, you can do with JavaScript as well. 
