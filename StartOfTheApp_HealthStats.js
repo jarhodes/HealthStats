@@ -138,7 +138,7 @@ const bmi = (weight, heightCms) => {
         for (let i = 0; i < (element.bmi / maxBmi) * 150; i++) {
             asteriskString += "*";
         }
-        console.log(element.bmi.toFixed(2) + ": " + asteriskString + " " + " " + element.date.toLocaleDateString());
+        console.log(element.bmi.toFixed(2) + ": " + asteriskString + " " + element.date.toLocaleDateString());
     });
 
 })(personalInfo, stats, bmi);
