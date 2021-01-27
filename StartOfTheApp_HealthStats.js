@@ -144,11 +144,19 @@ const bmi = (weight, heightCms) => {
 })(personalInfo, stats, bmi);
 
 // Task 3: Turn the data into JSON and back and make sure it still is valid and same information
+console.log(stats);
+
 const statsJson = JSON.stringify(stats);
 console.log(statsJson);
 
-const statsObj = JSON.parse(statsJson);
+const backParse = JSON.parse(statsJson);
+const statsObj = new Array;
+backParse.forEach(element => {
+    statsObj.push({ ...element, date: new Date(element.date) });
+})
 console.log(statsObj);
+
+console.log("Is statsObj the same as stats? " + (statsObj === stats));
 
 // Task 4: If want to, start thinking how to generate data. JavaScript is not the best suited
 // for that task, compared to e.g. Python. But if want, you can do with JavaScript as well. 
