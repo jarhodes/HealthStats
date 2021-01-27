@@ -155,8 +155,34 @@ backParse.forEach(element => {
     statsObj.push({ ...element, date: new Date(element.date) });
 })
 console.log(statsObj);
-
 console.log("Is statsObj the same as stats? " + (statsObj === stats));
+
+// JSON parse with a reviver function
+/* 
+const backParse2 = JSON.parse(statsJson, function (key, val) { 
+    if (key === "date") {
+        return new Date(val);
+    }
+    else {
+        return val;
+    }
+};
+*/
+// Reviver as an arrow function
+const backParse2 = JSON.parse(statsJson, (key, val) => key === "date" ? new Date(val) : val);
+console.log(backParse2);
+console.log("Is backParse2 the same as stats? " + (backParse2 === stats));
+
+// Check which elements are different
+for (let i = 0; i < stats.length; i++) {
+    console.log("Is stats " + i + " date the same as statsObj " + i + " date? " + (stats[i].date == statsObj[i].date));
+    console.log("Is stats " + i + " weight the same as statsObj " + i + " weight? " + (stats[i].weight == statsObj[i].weight));
+    console.log("Is stats " + i + " waist the same as statsObj " + i + " waist? " + (stats[i].waist == statsObj[i].waist));
+    console.log("Is stats " + i + " kcal the same as statsObj " + i + " kcal? " + (stats[i].kcal == statsObj[i].kcal));
+    console.log("Is stats " + i + " slept the same as statsObj " + i + " slept? " + (stats[i].slept == statsObj[i].slept));
+}
+
+// Dates are the problem
 
 // Task 4: If want to, start thinking how to generate data. JavaScript is not the best suited
 // for that task, compared to e.g. Python. But if want, you can do with JavaScript as well. 
